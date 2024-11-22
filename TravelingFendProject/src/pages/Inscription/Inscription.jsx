@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from "react-hook-form"
 import toast from 'react-hot-toast';
 import  axios  from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -87,7 +87,10 @@ export default function Inscription() {
                   }}
                   onSubmit={handleSubmit(onSubmit)}
                   >
-                    <Stack direction={"column"} gap={"3"}>
+                    <Stack sx={{
+                      direction:"column",
+                      "gap":3
+                    }}>
                     <TextField id="standard-basic" label="veillez saisir votre nom" 
                       variant="standard" 
                       fullWidth 
@@ -131,6 +134,14 @@ export default function Inscription() {
                     <Button sx={{
                       marginTop:3.
                     }} variant="contained" type='submit'>Inscription</Button>
+                    <Box sx={{
+                      marginTop: 5,
+                    }}>
+                      <p>
+                        Voulez-vous vous inscrire ? <Link to={"/connexion"}> cliquer ici </Link>
+                      </p>
+                      
+                    </Box>
                   </form>
                   
                 </Box>

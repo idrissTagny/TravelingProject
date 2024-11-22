@@ -1,14 +1,20 @@
 import { Box, Button, ButtonBase, Stack, TextField, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form"
 import toast from 'react-hot-toast';
 import  axios  from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 export default function Connexion() {
   const navigate = useNavigate()
+  
+  useEffect(()=>{
+    if (localStorage.getItem("utilisateur")) {
+      navigate("/")
+    }
+  })
   const {
     register,
     handleSubmit,
@@ -18,24 +24,25 @@ export default function Connexion() {
 
   const onSubmit = (data) => {
 
-    axios.get(`http://localhost:3000/utilisateur?email=${data.email}`).then((resp)=>{
-      if (resp.data.length > 0) {
-        axios.get(`http://localhost:3000/utilisateur?motDepassword=${data.motDepassword}`).then((resp)=>{
-          if (resp.data.length > 0) {
-            axios.get(`http://localhost:3000/utilisateur?email=${data.email}&motDepassword=${data.motDepassword}` ).then((resp)=>{
-              if (resp.data.length > 0) {
-                
+    axios.get(`http://localhost:3000/utilisateur?email=${data.email}`).then((resp1)=>{
+      if (resp1.data.length > 0) {
+        axios.get(`http://localhost:3000/utilisateur?motDepassword=${data.motDepassword}`).then((resp2)=>{
+          if (resp2.data.length > 0) {
+            axios.get(`http://localhost:3000/utilisateur?email=${data.email}&motDepassword=${data.motDepassword}` ).then((resp3)=>{
+              if (resp3.data.length > 0) {
+                localStorage.setItem("utilisateur", JSON.stringify(resp3.data[0]))
                 toast.success("conexion reussie")
                 setTimeout(()=>{
                   navigate("/")
                 },2000)
               }else{
-                  alert("ok")
+                  toast.error(" Cet utilisateur n'a pas de compte ")
               }
             }).catch((err)=>{
               console.log(err)
               toast.error("Une erreure est survenue")
-            })
+            })  
+            
           }else{
             toast.error(" Mot de passe incorrect ")
           }
@@ -106,7 +113,7 @@ export default function Connexion() {
 
                        fullWidth 
                        size='small'
-                       {...register('motDepassword', { required: 'Password is required', minLength: { value: 8, message: 'Password must be at least 8 characters' } })}
+                       {...register('motDepassword', { required: 'Password is required',  })}
                         
                        />
 
@@ -115,6 +122,15 @@ export default function Connexion() {
                     <Button sx={{
                       marginTop:3.
                     }} variant="contained" type='submit'>Connecter Vous</Button>
+
+                    <Box sx={{
+                      marginTop: 5,
+                    }}>
+                      <p>
+                        Voulez-vous vous inscrire ? <Link to={"/inscription"}> cliquer ici </Link>
+                      </p>
+                      
+                    </Box>
                   </form>
                   
                 </Box>

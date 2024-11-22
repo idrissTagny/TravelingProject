@@ -2,16 +2,19 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Dashboard from './pages/dashboard/Dashboard.jsx'
 import Inscription from './pages/Inscription/Inscription.jsx'
 import Connexion from './pages/Connexion/Connexion.jsx'
 import { Toaster } from "react-hot-toast";
 import { Box, Stack, TextField } from '@mui/material'
+import Dashboard from './pages/dashboard/Dashboard1/Dashboard.jsx'
+
 
 const route = createBrowserRouter([
   {
     path:"/",
-    element: <Dashboard/>
+    element: <body>
+      <Dashboard/>
+    </body>
   },
   {
     path:"/inscription",
