@@ -15,7 +15,7 @@ export default function RightSection({toggleSidebar}) {
         document.body.classList.remove('dark-mode-variables')
       }
     })
-  return (
+  return ( 
     <div>
       <div className="right-section">
     <div className="nav">
