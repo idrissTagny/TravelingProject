@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
+import logo from "../Dashboard1/images/logoTraveling.png";
 
 
 export default function Sidebar({toggleSidebar,isSidebarVisible}) {
@@ -11,6 +12,9 @@ const mainFonction = (label)=>{
             window.location.reload()
         }, 3000)
     }
+    if (label == "Dashboard") {
+        window.location.replace("/")
+    }
 }
 
   return (
@@ -18,7 +22,7 @@ const mainFonction = (label)=>{
         <aside style={{ display: isSidebarVisible ? 'block' : 'none' }}>
             <div className="toggle">
             <div className="logo">
-                <img src="images/logo.png" alt="Logo" />
+                <img src={logo} alt="Logo" />
                 <h2>Trave<span className="danger">Ling</span></h2>
             </div>
             <div className="close" id="close-btn" onClick={toggleSidebar}>
@@ -30,7 +34,7 @@ const mainFonction = (label)=>{
             {[
                 { icon: "dashboard", label: "Dashboard" },
                 { icon: "person_outline", label: "Users" },
-                { icon: "receipt_long", label: "History" },
+                { icon: "receipt_long", label: "History des voyages" },
                 { icon: "insights", label: "Analytics", active: true },
                 { icon: "mail_outline", label: "Tickets", count: 27 },
                 { icon: "inventory", label: "Sale List" },

@@ -220,15 +220,36 @@ aside .sidebar .message-count{
     font-size: 11px;
     border-radius: var(--border-radius-1);
 }
+.Mlanding{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+    background-image: url('./images/bg/bg3.jpg');
+    margin-top: 5rem;
+    background-size: cover;
 
+}
+.Mlanding .content h1 b p{
+    color: #f6f6f9;
+}
+.search{
+    background-color:#fff;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 main{
     margin-top: 1.4rem;
 }
 
 main .analyse{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.6rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
 }
 
 main .analyse > div{
@@ -248,12 +269,11 @@ main .analyse > div:hover{
 main .analyse > div .status{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 main .analyse h3{
-    margin-left: 0.6rem;
-    font-size: 1rem;
+    
 }
 
 main .analyse .progresss{
@@ -271,7 +291,6 @@ main .analyse svg{
 main .analyse svg circle{
     fill: none;
     stroke-width: 10;
-    stroke-linecap: round;
     transform: translate(5px, 5px);
 }
 
@@ -378,6 +397,8 @@ main .recent-orders a{
     margin: 1rem auto;
     color: var(--color-primary);
 }
+
+
 
 .right-section{
     margin-top: 1.4rem;
@@ -488,11 +509,13 @@ main .recent-orders a{
     border-radius: var(--border-radius-2);
     box-shadow: var(--box-shadow);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .right-section .reminders .notification:hover{
     box-shadow: none;
+    background-color: rgba(255, 0, 96,0.5);
+    color: var(--color-white);
 }
 
 .right-section .reminders .notification .content{
@@ -509,6 +532,10 @@ main .recent-orders a{
     background-color: var(--color-success);
     border-radius: 20%;
     display: flex;
+}
+.right-section .reminders .notification .icon:hover{
+    color:var(--color-white) ;
+    background-color: var(--color-white);
 }
 
 .right-section .reminders .notification.deactive .icon{

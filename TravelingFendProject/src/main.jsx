@@ -7,6 +7,7 @@ import Connexion from './pages/Connexion/Connexion.jsx'
 import { Toaster } from "react-hot-toast";
 import { Box, Stack, TextField } from '@mui/material'
 import Dashboard from './pages/dashboard/Dashboard1/Dashboard.jsx'
+import InitVoyage from './pages/InitVoyage/InitVoyage.jsx'
 
 
 const route = createBrowserRouter([
@@ -41,6 +42,10 @@ const route = createBrowserRouter([
         </p>
       </Stack>
     </>
+  },
+  {
+    path:"/Inivoya",
+    element:<InitVoyage/>
   }
 ])
 

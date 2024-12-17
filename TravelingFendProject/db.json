@@ -6,6 +6,16 @@
       "email": "idrisstagny@gmail.com",
       "motDepassword": "12345678",
       "ConfirmPassword": "12345678"
+    },
+    {
+      "id": "2ea1",
+      "nomUtilisateur": "Lorine",
+      "email": "lorinesandra@gmail.com",
+      "motDepassword": "12345678",
+      "ConfirmPassword": "12345678"
     }
+  ],
+  "VOYAGE":[
+    
   ]
 }
