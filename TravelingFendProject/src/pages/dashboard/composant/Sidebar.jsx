@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import logo from "../Dashboard1/images/logoTraveling.png";
+import { Link } from 'react-router-dom';
 
 
 export default function Sidebar({toggleSidebar,isSidebarVisible}) {
@@ -22,8 +23,10 @@ const mainFonction = (label)=>{
         <aside style={{ display: isSidebarVisible ? 'block' : 'none' }}>
             <div className="toggle">
             <div className="logo">
-                <img src={logo} alt="Logo" />
-                <h2>Trave<span className="danger">Ling</span></h2>
+                <Link to={"/"}>
+                    <img src={logo} alt="Logo" />
+                    <h2>Trave<span className="danger">Ling</span></h2>
+                </Link>
             </div>
             <div className="close" id="close-btn" onClick={toggleSidebar}>
                 <span className="material-icons-sharp">close</span>

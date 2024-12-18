@@ -24,9 +24,32 @@ export default function RightSection({ toggleSidebar }) {
     }
   }, [isDarkMode]); // Ajout de la dépendance pour ne mettre à jour qu'en cas de changement
 
-  const mainFonction = (label)=>{
-    alert(label)
-  }
+  const mainFonction = (label) => {
+
+    // Séparer le texte sur les espaces
+    const x = label.split(" ");
+    
+    // Vérifie si le tableau résultant a au moins un élément
+    if (x.length > 0) {
+      if (x[0] == "Ajouter") {
+        window.setTimeout(()=>{
+          window.location.replace("/add_vehicule")
+        },300)        
+      }
+      if (x[0]=="Modifier") {
+        window.setTimeout(()=>{
+          window.location.replace("/edit_travel")
+        },300) 
+      } 
+      if (x[0]=="Consulter") {
+        window.setTimeout(()=>{
+          window.location.replace("/consult_travel")
+        },300) 
+      }
+    } else {
+      alert("Aucun mot trouvé dans la chaîne fournie.");
+    }
+  };
 
   return (
     <div>
@@ -68,7 +91,7 @@ export default function RightSection({ toggleSidebar }) {
 
         <div className="reminders">
           <div className="header">
-            <h2>Reminders</h2>
+            <h2>Fonctionnalites</h2>
             <span className="material-icons-sharp">notifications_none</span>
           </div>
 
