@@ -17,11 +17,10 @@ export default function MainContent() {
   const onSubmit = (data) => console.log(data)
   return (
     <Stack
-    justifyContent={"center"}
     alignItems={"center"}
     width={"60%"}
     height={"100vh"}
-    gap={'20rem'}
+    gap={'5rem'}
 
     >
       <Typography  variant='h1'>
@@ -36,210 +35,286 @@ export default function MainContent() {
     <h2>1. Informations sur le véhicule</h2>
   </center>
   <div className="col-md-6">
-    <label htmlFor="validationServer01" className="form-label">car name and Mark</label>
+    <label htmlFor="car_name" className="form-label">car name and Mark</label>
     <input 
       type="text" 
-      className="form-control is-valid" 
-      id="validationServer01" 
+      className={`form-control ${ errors.car_name ? "is-invalid" : "is-valid"}`} 
+      id="car_name" 
       placeholder="enter the brand  and name of your car (TOYOTA COROLLA)" 
       required 
-      {...register("car_name")}
+      {...register("car_name", {
+        required: "Car name is required",
+        minLength: {
+          value: 6,
+          message: "Enter more than 6 characters",
+        },
+      })}
     />
+    <div className="invalid-feedback">
+      {errors.car_name?.message}
+    </div>
     <div className="valid-feedback">
-      Looks good!
+      Looks good!!
     </div>
   </div>
   
   <div className="col-md-6">
-    <label htmlFor="validationServer02" className="form-label">Car color</label>
+    <label htmlFor="Car_color" className="form-label">Car color</label>
     <input 
       type="text" 
-      className="form-control is-valid" 
-      id="validationServer02" 
+      className={`form-control ${errors.car_color ? "is-invalid" : "is-valid"}`}
+      id="Car_color" 
       placeholder="enter car color (BLUE, RED...)" 
       required 
+      {...register("car_color", {required:"enter car color (BLUE, RED...)", message:"entrer une couleur valide"})}
     />
+    <div className="invalid-feedback">
+      {errors.car_color?.message}
+    </div>
     <div className="valid-feedback">
-      Looks good!
+      Looks good!!!
     </div>
   </div>
   
   <div className="col-md-12">
-    <label htmlFor="validationServerUsername" className="form-label">Vehicle registration</label>
-    <div className="input-group has-validation">
-      <span className="input-group-text" id="inputGroupPrepend3">@</span>
-      <input 
-        type="text" 
-        className="form-control is-invalid" 
-        id="validationServerUsername" 
-        placeholder="enter vehicle registration ( LT 4568 A )" 
-        aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" 
-        required 
-      />
-      <div id="validationServerUsernameFeedback" className="invalid-feedback">
-        Please choose Vehicle registration.
-      </div>
-    </div>
-  </div>
+          <label htmlFor="car_registration" className="form-label">
+            Vehicle Registration
+          </label>
+          <input
+            type="text"
+            className={`form-control ${
+              errors.car_registration ? "is-invalid" : "is-valid"
+            }`}
+            id="car_registration"
+            placeholder="Enter vehicle registration (LT 4568 A)"
+            {...register("car_registration", {
+              required: "Vehicle registration is required",
+              minLength: {
+                value: 7,
+                message: "Registration must be at least 7 characters",
+              },
+            })}
+          />
+          <div className="invalid-feedback">
+            {errors.car_registration?.message}
+          </div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
   
-  <div className="col-md-6">
-    <label htmlFor="validationServer03" className="form-label">type of vehicle</label>
-    <input 
-      type="text" 
-      className="form-control is-invalid" 
-      id="validationServer03" 
-      placeholder="Enter type of vehicle (ex : Berline, SUV, Camion)" 
-      aria-describedby="validationServer03Feedback" 
-      required 
-    />
-    <div id="validationServer03Feedback" className="invalid-feedback">
-      Please provide a valid type of vehicle.
-    </div>
-  </div>
+        <div className="col-md-6">
+          <label htmlFor="car_type" className="form-label">
+            Type of Vehicle
+          </label>
+          <input
+            type="text"
+            className={`form-control ${
+              errors.car_type ? "is-invalid" : "is-valid"
+            }`}
+            id="car_type"
+            placeholder="Enter type of vehicle (e.g., Berline, SUV)"
+            {...register("car_type", {
+              required: "Vehicle type is required",
+            })}
+          />
+          <div className="invalid-feedback">{errors.car_type?.message}</div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
   
-  <div className="col-md-3">
-    <label htmlFor="validationServer04" className="form-label">number of places available</label>
-    <select 
-      className="form-select is-valid" 
-      id="validationServer04" 
-      aria-describedby="validationServer04Feedback" 
-      required
-    >
-      <option selected disabled value="">Choose...</option>
-      <option><strong>1</strong></option>
-      <option><strong>2</strong></option>
-      <option><strong>3</strong></option>
-      <option><strong>4</strong></option>
-      <option><strong>5</strong></option>
-      <option><strong>6</strong></option>
-      <option><strong>7</strong></option>
-      <option><strong>8</strong></option>
-    </select>
-    <div id="validationServer04Feedback" className="valid-feedback">
-      Looks good.
-    </div>
-  </div>
-  
+        <div className="col-md-6">
+          <label htmlFor="nbr_place" className="form-label">
+            Number of Places
+          </label>
+          <select
+            className={`form-select ${
+              errors.nbr_place ? "is-invalid" : "is-valid"
+            }`}
+            id="nbr_place"
+            {...register("nbr_place", {
+              required: "Please select the number of places",
+            })}
+          >
+            <option value="" disabled selected>
+              Choose...
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <div className="invalid-feedback">{errors.nbr_place?.message}</div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
   
 
   <div className="col-md-12">
-    <label htmlFor="validationServerUsername" className="form-label">Chassis number</label>
-    <div className="input-group has-validation">
-      <span className="input-group-text" id="inputGroupPrepend3">@</span>
-      <input 
-        type="text" 
-        className="form-control is-invalid" 
-        id="validationServerUsername" 
-        placeholder="enter Numéro de châssis ( 1HGCM82633A123456 )" 
-        aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" 
-        required 
-      />
-      <div id="validationServerUsernameFeedback" className="invalid-feedback">
-        Please choose Vehicle registration.
-      </div>
-    </div>
-  </div>
+          <label htmlFor="car_chassis_number" className="form-label">
+          Chassis number
+          </label>
+          <input
+            type="text"
+            className={`form-control ${
+              errors.car_chassis_number ? "is-invalid" : "is-valid"
+            }`}
+            id="car_chassis_number"
+            placeholder="enter Numéro de châssis ( 1HGCM82633A123456 )"
+            {...register("car_chassis_number", {
+              required: "enter Numéro de châssis ( 1HGCM82633A123456 )",
+              minLength: {
+                value: 7,
+                message: "car_chassis_number must be at least 7 characters",
+              },
+              maxLength:{
+                value:7,
+                message:"car_chassis_number must not contain more than 7 characters"
+              },
+            })}
+          />
+          <div className="invalid-feedback">
+            {errors.car_chassis_number?.message}
+          </div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
   
  
   <center>
     <h2>2. Informations sur le propriétaire</h2>
   </center>
 
-  <div className="col-md-6">
-    <label htmlFor="validationServer03" className="form-label">Driving license number</label>
-    <input 
-      type="text" 
-      className="form-control is-invalid" 
-      id="validationServer03" 
-      placeholder="Enter Driving license number" 
-      aria-describedby="validationServer03Feedback" 
-      required 
-    />
-    <div id="validationServer03Feedback" className="invalid-feedback">
-      Please provide a Driving license number.
-    </div>
-  </div>
+  <div className="col-md-6" >
+          <label htmlFor="drivers_license" className="form-label">
+            Driving License Number
+          </label>
+          <input
+            type="text"
+            className={`form-control ${
+              errors.drivers_license ? "is-invalid" : "is-valid"
+            }`}
+            id="drivers_license"
+            placeholder="Enter driving license number"
+            {...register("drivers_license", {
+              required: "Driving license number is required",
+            })}
+          />
+          <div className="invalid-feedback">
+            {errors.drivers_license?.message}
+          </div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
 
-  <div className="col-md-6">
-    <label htmlFor="validationServer03" className="form-label">identity card number</label>
-    <input 
-      type="text" 
-      className="form-control is-invalid" 
-      id="validationServer03" 
-      placeholder="Enter Driving license number" 
-      aria-describedby="validationServer03Feedback" 
-      required 
-    />
-    <div id="validationServer03Feedback" className="invalid-feedback">
-      Please provide a identity card number.
-    </div>
-  </div>
+        {/* Identity Card */}
+        <div className="col-md-6">
+          <label htmlFor="card_identity" className="form-label">
+            Identity Card Number
+          </label>
+          <input
+            type="text"
+            className={`form-control ${
+              errors.card_identity ? "is-invalid" : "is-valid"
+            }`}
+            id="card_identity"
+            placeholder="Enter identity card number"
+            {...register("card_identity", {
+              required: "Identity card number is required",
+            })}
+          />
+          <div className="invalid-feedback">
+            {errors.card_identity?.message}
+          </div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
 
   <center>
     <h2>3. Informations administratives</h2>
   </center>
 
-  <div className="col-md-3">
-    <label htmlFor="validationServer04" className="form-label">Vehicle Status</label>
-    <select 
-      className="form-select is-valid" 
-      id="validationServer04" 
-      aria-describedby="validationServer04Feedback" 
-      required
-    >
-      <option selected disabled value="">Choose...</option>
-      <option><strong>Neuf</strong></option>
-      <option><strong>Pas neuf</strong></option>
-    </select>
-    <div id="validationServer04Feedback" className="valid-feedback">
-      Looks good.
-    </div>
-  </div>
+  <div className="col-md-3" >
+          <label htmlFor="car_status" className="form-label">
+            Vehicle Status
+          </label>
+          <select
+            className={`form-select ${
+              errors.car_status ? "is-invalid" : "is-valid"
+            }`}
+            id="car_status"
+            {...register("car_status", {
+              required: "Please select the vehicle status",
+            })}
+          >
+            <option value="" disabled selected>
+              Choose...
+            </option>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+          </select>
+          <div className="invalid-feedback">{errors.car_status?.message}</div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
 
-  <div className="col-md-3">
-    <label htmlFor="validationServer05" className="form-label">Gray card</label>
-    <input 
-      type="text" 
-      className="form-control is-invalid" 
-      id="validationServer05" 
-      placeholder="Enter Card number or copy" 
-      aria-describedby="validationServer05Feedback" 
-      required 
-    />
-    <div id="validationServer05Feedback" className="invalid-feedback">
-      Please provide a valid Card number or copy.
-    </div>
-  </div>
+
+        <div className="col-md-3">
+          <label htmlFor="gray_card" className="form-label">
+            Gray Card
+          </label>
+          <input
+            type="text"
+            className={`form-control ${
+              errors.gray_card ? "is-invalid" : "is-valid"
+            }`}
+            id="gray_card"
+            placeholder="Enter gray card number"
+            {...register("gray_card", {
+              required: "Gray card is required",
+            })}
+          />
+          <div className="invalid-feedback">{errors.gray_card?.message}</div>
+          <div className="valid-feedback">Looks good!</div>
+        </div>
 
   <div className="col-md-6">
-    <label htmlFor="validationServer03" className="form-label">Assurance</label>
+    <label htmlFor={`${errors.assurance_company ? 
+                    "assurance_company" : errors.assurance_policy_number ? "assurance_policy_number" : "assurance_date_expiration"}`} 
+    className="form-label">Assurance</label>
     <input 
       type="text" 
-      className="form-control is-invalid" 
-      id="validationServer03" 
-      placeholder="Enter Name of insurance company" 
+      className={`form-control ${errors.assurance_company ? "is-invalid" : "is-valid"}`} 
+      id="assurance_company" 
+      placeholder="Enter the name of the insurance company" 
       aria-describedby="validationServer03Feedback" 
       required 
+      {...register("assurance_company", {required:"Enter the name of the insurance company", minLength:{ value:1, message:"Enter the name of the insurance company"}})}
     />
-        <input 
+    <input 
       type="text" 
-      className="form-control is-invalid" 
-      id="validationServer03" 
+      className={`form-control ${errors.assurance_policy_number ? "is-invalid" : "is-valid"}`} 
+      id="assurance_policy_number" 
       placeholder="Enter Insurance policy number" 
       aria-describedby="validationServer03Feedback" 
       required 
+      {...register("assurance_policy_number", {required:"Enter Insurance policy number", minLength:{ value:1, message:"Enter Insurance policy number"}})}
     />
     <i>Insurance expiration date</i>
       <input 
       type="date" 
-      className="form-control is-invalid" 
-      id="validationServer03" 
+      className={`form-control ${errors.assurance_company ? "is-invalid" : "is-valid"}`} 
+      id="assurance_date_expiration" 
       alt="Enter Insurance expiration date" 
       aria-describedby="validationServer03Feedback" 
       required 
+      {...register("assurance_date_expiration", {required:"Enter Insurance expiration date", minLength:{ value:1, message:"Enter Insurance expiration date"}})}
+
+
     />
     <div id="validationServer03Feedback" className="invalid-feedback">
-      Please provide a Assurance.
+      {errors.assurance_company?.message}. &nbsp;&nbsp;&nbsp;
+      {errors.assurance_policy_number?.message}&nbsp;&nbsp;
+      {errors.assurance_date_expiration?.message}
+    </div>
+    <div id="validationServer03Feedback" className="valid-feedback">
+      Looks good !
     </div>
   </div>
 
@@ -254,14 +329,14 @@ export default function MainContent() {
       <span className="input-group-text" id="inputGroupPrepend3">@</span>
       <input 
         type="img" 
-        className="form-control is-invalid" 
+        className="form-control is-valid" 
         id="validationServerUsername" 
         placeholder="enter Numéro de châssis ( 1HGCM82633A123456 )" 
         aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" 
-        required 
+        {...register("car_photo")}
       />
-      <div id="validationServerUsernameFeedback" className="invalid-feedback">
-        Please choose Vehicle photo
+      <div id="validationServerUsernameFeedback" className="valid-feedback">
+        good
       </div>
     </div>
   </div>
@@ -269,20 +344,24 @@ export default function MainContent() {
 
 
   <div className="col-md-3">
-    <label htmlFor="validationServer04" className="form-label">Use category</label>
+    <label htmlFor="use_category" className="form-label">Use category</label>
     <select 
-      className="form-select is-valid" 
-      id="validationServer04" 
+      className={`form-select ${
+        errors.use_category ? "is-invalid" : "is-valid"
+      }`}
+      id="use_category" 
       aria-describedby="validationServer04Feedback" 
       required
+      {...register("use_category", {
+        required: "Please select the vehicle use category",
+      })}
     >
       <option selected disabled value="">Choose...</option>
-      <option><strong>Private or professional use.</strong></option>
-      <option><strong>Taxi, delivery, etc.</strong></option>
+      <option value="Private"><strong>Private or professional use.</strong></option>
+      <option value="Taxi"><strong>Taxi, delivery, etc.</strong></option>
     </select>
-    <div id="validationServer04Feedback" className="valid-feedback">
-      Looks good.
-    </div>
+    <div className="invalid-feedback">{errors.use_category?.message}</div>
+    <div className="valid-feedback">Looks good!</div>
   </div>
 
   <div className="col-md-6">
@@ -294,6 +373,7 @@ export default function MainContent() {
         type="checkbox" 
         id="optionGPS" 
         value="GPS" 
+        {...register("have_gps")}
       />
       <label className="form-check-label ms-2" htmlFor="optionGPS">
         GPS
@@ -305,6 +385,7 @@ export default function MainContent() {
         type="checkbox" 
         id="optionClimatisation" 
         value="Climatisation" 
+        {...register("have_clim")}
       />
       <label className="form-check-label ms-2" htmlFor="optionClimatisation">
         Climatisation
@@ -316,6 +397,8 @@ export default function MainContent() {
         type="checkbox" 
         id="optionSiegesChauffants" 
         value="Sièges Chauffants" 
+        {...register("have_heated_seats")}
+
       />
       <label className="form-check-label ms-2" htmlFor="optionSiegesChauffants">
         Sièges Chauffants
@@ -337,6 +420,7 @@ export default function MainContent() {
         id="invalidCheck3" 
         aria-describedby="invalidCheck3Feedback" 
         required 
+        {...register("agree")}
       />
       <label className="form-check-label" htmlFor="invalidCheck3">
         Agree to terms and conditions
