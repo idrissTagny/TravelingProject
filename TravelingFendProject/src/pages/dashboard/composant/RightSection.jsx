@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import photo from "../Dashboard1/images/profile-2.jpg";
 import logo from "../Dashboard1/images/logoTraveling.png";
+import { useNavigate } from "react-router-dom";
 
 
 export default function RightSection({ toggleSidebar }) {
+
+  const navigate = useNavigate()
   // Initialiser l'utilisateur avec une fonction pour lire le localStorage une seule fois
   const [utilisateur, setUtilisateur] = useState(() => {
     const utilisateurStocke = localStorage.getItem("utilisateur");
@@ -25,7 +28,7 @@ export default function RightSection({ toggleSidebar }) {
   }, [isDarkMode]); // Ajout de la dépendance pour ne mettre à jour qu'en cas de changement
 
   const mainFonction = (label) => {
-
+    const y = label
     // Séparer le texte sur les espaces
     const x = label.split(" ");
     
@@ -33,17 +36,27 @@ export default function RightSection({ toggleSidebar }) {
     if (x.length > 0) {
       if (x[0] == "Ajouter") {
         window.setTimeout(()=>{
-          window.location.replace("/add_vehicule")
+          navigate("/add_vehicule")
         },300)        
       }
       if (x[0]=="Modifier") {
         window.setTimeout(()=>{
-          window.location.replace("/edit_travel")
+          navigate("/edit_travel")
         },300) 
       } 
-      if (x[0]=="Consulter") {
+      if (x[0]=="Consulter" && x[2]=="voyages") {
         window.setTimeout(()=>{
-          window.location.replace("/consult_travel")
+          navigate("/consult_travel")
+        },300) 
+      }
+      if (x[0]=="Consulter" && x[2]=="trajets") {
+        window.setTimeout(()=>{
+          navigate("/mes_trajets")
+        },300) 
+      }
+      if (y == "intTravel") {
+        window.setTimeout(()=>{
+          navigate("/init_voyage")
         },300) 
       }
     } else {
@@ -96,10 +109,10 @@ export default function RightSection({ toggleSidebar }) {
           </div>
 
           {[
-            { label: "Ajouter un vehicule", time: "08:00 AM - 12:00 PM", icon: "local_taxi", deactive: true  },
-            { label: "Modifier un voyage", time: "08:00 AM - 12:00 PM", icon: "edit", deactive: true },
-            { label: "Consulter les voyages", time: "08:00 AM - 12:00 PM", icon: "visibility", deactive: true },
-            { label: "Consulter mes voyages", time: "08:00 AM - 12:00 PM", icon: "add_road", deactive: true },
+            { label: "Ajouter un vehicule",  icon: "local_taxi", deactive: true  },
+            { label: "Modifier un voyage",  icon: "edit", deactive: true },
+            { label: "Consulter les voyages", icon: "visibility", deactive: true },
+            { label: "Consulter mes trajets",  icon: "add_road", deactive: true },
             
           ].map((reminder, index) => (
             <div
@@ -119,12 +132,16 @@ export default function RightSection({ toggleSidebar }) {
             </div>
           ))}
 
-          <div className="notification add-reminder">
+          <div className="notification add-reminder"
+              onClick={()=>mainFonction("intTravel")} 
+
+          >
             <div>
               <span className="material-icons-sharp">add</span>
               <h3>Initier un voyage</h3>
             </div>
           </div>
+
         </div>
       </div>
     </div>

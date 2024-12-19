@@ -7,10 +7,11 @@ import Connexion from './pages/Connexion/Connexion.jsx'
 import { Toaster } from "react-hot-toast";
 import { Box, Stack, TextField } from '@mui/material'
 import Dashboard from './pages/dashboard/Dashboard1/Dashboard.jsx'
-import InitVoyage from './pages/InitVoyage/InitVoyage.jsx'
 import Add_vehicule from './pages/dashboard/composant/fonctionalites/add_vehicule/Add_vehicule.jsx'
 import Edit_travel from './pages/dashboard/composant/fonctionalites/edit_travel/Edit_travel.jsx'
 import Consult_travel from './pages/dashboard/composant/fonctionalites/consult_travel/Consult_travel.jsx'
+import InitVoyage from './pages/dashboard/composant/fonctionalites/InitVoyage/InitVoyage.jsx'
+import Consult_route from './pages/dashboard/composant/fonctionalites/consult_route/Consult_route.jsx'
 
 
 const route = createBrowserRouter([
@@ -47,7 +48,7 @@ const route = createBrowserRouter([
     </>
   },
   {
-    path:"/Inivoya",
+    path:"/init_voyage",
     element:<InitVoyage/>
   },
   {
@@ -74,6 +75,14 @@ const route = createBrowserRouter([
     element:(<>
       <Consult_travel/>
     </>)
+  },
+  {
+    path:"/mes_trajets",
+    element:(
+      <>
+        <Consult_route/>
+      </>
+    )
   }
 ])
 
