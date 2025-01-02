@@ -20,7 +20,7 @@ Assurez-vous d'avoir les outils suivants installés sur votre machine :
 - **Node.js** (version 14 ou supérieure)
 - **npm** (généralement inclus avec Node.js)
 - **Git** (pour cloner le dépôt)
-- **Vite** (Outil de développement rapide pour les applications React.)
+- **Vite** (Outil de développement rapide pour les applications React.git status)
 
 ---
 
@@ -85,12 +85,12 @@ travelingfendproject/
 
 ## Contributeurs
 FrontEnd
-- [Nom du contributeur 1](https://github.com/idrissTagny)
-- [Nom du contributeur 2](https://github.com/Sandralorine)
+- idriss tagny [Nom du contributeur 1](https://github.com/idrissTagny)
+- kuete lorine [Nom du contributeur 2](https://github.com/Sandralorine)
 
 Backend
-- [Nom du contributeur 1](https://github.com/JUSTE-NATHAN)
-- [Nom du contributeur 1](https://github.com/OlivierTchall)
+- foka nathan [Nom du contributeur 1](https://github.com/JUSTE-NATHAN)
+- tchatchouang olivier[Nom du contributeur 1](https://github.com/OlivierTchall)
 
 
 ---
