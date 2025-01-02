@@ -20,13 +20,14 @@ Assurez-vous d'avoir les outils suivants installés sur votre machine :
 - **Node.js** (version 14 ou supérieure)
 - **npm** (généralement inclus avec Node.js)
 - **Git** (pour cloner le dépôt)
+- **Vite** (Outil de développement rapide pour les applications React.)
 
 ---
 
 ## Installation
 1. **Cloner le projet** :
    ```bash
-   git clone https://github.com/votre-repository/travelingfendproject.git
+   git clone -b FrontEnd https://github.com/idrissTagny/TravelingProject.git
    ```
 
 2. **Naviguer dans le répertoire** :
@@ -83,13 +84,16 @@ travelingfendproject/
 ---
 
 ## Contributeurs
-- [Nom du contributeur 1](https://github.com/nom-contributeur1)
-- [Nom du contributeur 2](https://github.com/nom-contributeur2)
+FrontEnd
+- [Nom du contributeur 1](https://github.com/idrissTagny)
+- [Nom du contributeur 2](https://github.com/Sandralorine)
+
+Backend
+- [Nom du contributeur 1](https://github.com/JUSTE-NATHAN)
+- [Nom du contributeur 1](https://github.com/OlivierTchall)
+
 
 ---
-
-## Licence
-Ce projet est sous licence [MIT](https://opensource.org/licenses/MIT). Vous êtes libre de l'utiliser, de le modifier et de le distribuer.
 
 ---
 
