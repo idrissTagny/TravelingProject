@@ -60,7 +60,7 @@ travelingfendproject/
 ├── src/              # Code source principal
 │   ├── components/   # Composants React réutilisables
 │   ├── pages/        # Pages principales de l'application
-│   ├── hooks/        # Hooks personnalisés
+│   ├── hooks/        # Hooks personnalisés 
 │   ├── services/     # Fichiers pour les appels API avec Axios
 │   ├── App.jsx       # Point d'entrée de l'application React
 │   ├── main.jsx      # Point d'entrée pour Vite
