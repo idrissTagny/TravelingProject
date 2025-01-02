@@ -85,12 +85,12 @@ travelingfendproject/
 
 ## Contributeurs
 FrontEnd
-- [Nom du contributeur 1](https://github.com/idrissTagny)
-- [Nom du contributeur 2](https://github.com/Sandralorine)
+- idriss tagny [Nom du contributeur 1](https://github.com/idrissTagny)
+- kuete lorine [Nom du contributeur 2](https://github.com/Sandralorine)
 
 Backend
-- [Nom du contributeur 1](https://github.com/JUSTE-NATHAN)
-- [Nom du contributeur 1](https://github.com/OlivierTchall)
+- foka nathan [Nom du contributeur 1](https://github.com/JUSTE-NATHAN)
+- tchatchouang olivier[Nom du contributeur 1](https://github.com/OlivierTchall)
 
 
 ---
