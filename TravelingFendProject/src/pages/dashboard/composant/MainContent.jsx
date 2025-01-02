@@ -1,8 +1,30 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import Newvoyage from './optimisation/Newvoyage';
 
 
 
 export default function MainContent() {
+  const [newVoyages, setnewVoyages] = useState([]); // État pour stocker les voyages
+  const [index, setIndex] = useState(0)
+
+
+
+  useEffect(() => {
+    // Récupération des données via Axios
+    axios
+      .get('http://localhost:3000/voyages')
+      .then((resp) => {
+        const data = resp.data; // Les données JSON
+        console.log(data)
+        setnewVoyages(data); // Mise à jour de l'état
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la récupération des données :', error);
+      });
+  }, []); // Le tableau vide [] signifie que cet effet s'exécute une seule fois, après le montage
+
+
   return (
     <div>
       <div className='Mlanding' >
@@ -17,9 +39,10 @@ export default function MainContent() {
       <main>
 
       <h1>Rechercher un voyage</h1>
-
-      <div className="analyse">
+      
+      <div className="">
         <form >
+        
               <div className="input-group mb-3">
                 <span className="input-group-text material-icons-sharp" id="basic-addon1">trip_origin</span>
                 <input 
@@ -74,7 +97,12 @@ export default function MainContent() {
         <h2>New voyage
 
         </h2>
+
+        {newVoyages.map((voya) => (
+          <Newvoyage Data={voya} key={voya.id} /> // Assurez-vous de retourner l'élément ici
+         ))}
         <div className="user-list">
+        
           {[
             { name: "Jack", time: "54 Min Ago", img: "images/profile-2.jpg" },
             { name: "Amir", time: "3 Hours Ago", img: "images/profile-3.jpg" },
